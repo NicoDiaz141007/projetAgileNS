@@ -1,106 +1,106 @@
-    <?xml version="1.0" encoding="UTF-8"?>
-    <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-        <modelVersion>4.0.0</modelVersion>
-        <groupId>fr.utc.ida.forge.shareportfolioida</groupId>
-        <artifactId>sharePortfolioIDA</artifactId>
-        <version>1.0-SNAPSHOT</version>
-        <packaging>jar</packaging>
-        <dependencies>
-            <dependency>
-                <groupId>org.junit.jupiter</groupId>
-                <artifactId>junit-jupiter-api</artifactId>
-                <version>5.6.0</version>
-                <scope>test</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.junit.jupiter</groupId>
-                <artifactId>junit-jupiter-params</artifactId>
-                <version>5.6.0</version>
-                <scope>test</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.junit.jupiter</groupId>
-                <artifactId>junit-jupiter-engine</artifactId>
-                <version>5.6.0</version>
-                <scope>test</scope>
-            </dependency>
-        </dependencies>
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>fr.utc.ida.forge.shareportfolioida</groupId>
+    <artifactId>sharePortfolioIDA</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+    <dependencies>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>5.6.0</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-params</artifactId>
+            <version>5.6.0</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>5.6.0</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
 
-        <licenses>
-            <license>
-                <name>The Apache License, Version 2.0</name>
-                <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-            </license>
-        </licenses>
+    <licenses>
+        <license>
+            <name>The Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+        </license>
+    </licenses>
 
 
-        <properties>
-            <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-            <maven.compiler.source>18</maven.compiler.source>
-            <maven.compiler.target>18</maven.compiler.target>
-            <exec.mainClass>fr.utc.ida.forge.shareportfolioida.SharePortfolioIDA</exec.mainClass>
-            <name>${project.groupId}:${project.artifactId}</name>
-            <description>This library allows the creation and hading of shares both simple or complexe.</description>
-            <url>https://github.com/NicoDiaz141007/projetAgileNS.git</url>
-            <sonar.organization>nicodiaz141007</sonar.organization>
-            <sonar.projectKey>NicoDiaz141007_projetAgileNS</sonar.projectKey>
-            <sonar.host.url>https://sonarcloud.io</sonar.host.url>
-            <sonar.java.libraries></sonar.java.libraries>
-        </properties>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>18</maven.compiler.source>
+        <maven.compiler.target>18</maven.compiler.target>
+        <exec.mainClass>fr.utc.ida.forge.shareportfolioida.SharePortfolioIDA</exec.mainClass>
+        <name>${project.groupId}:${project.artifactId}</name>
+        <description>This library allows the creation and hading of shares both simple or complexe.</description>
+        <url>https://github.com/NicoDiaz141007/projetAgileNS.git</url>
+        <sonar.organization>nicodiaz141007</sonar.organization>
+        <sonar.projectKey>NicoDiaz141007_projetAgileNS</sonar.projectKey>
+        <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+        <sonar.java.libraries></sonar.java.libraries>
+    </properties>
 
-        <build>
+    <build>
 
         <plugins>
 
             <plugin>
-                    <groupId>org.jacoco</groupId>
-                    <artifactId>jacoco-maven-plugin</artifactId>
-                    <version>0.8.8</version>
-                    <executions>
-                        <execution>
-                            <goals>
-                                <goal>prepare-agent</goal>
-                            </goals>
-                        </execution>
-                        <execution>
-                            <id>report</id>
-                            <phase>test</phase>
-                            <goals>
-                                <goal>report</goal>
-                            </goals>
-                        </execution>
-                    </executions>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>0.8.8</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>report</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
 
 
 
 
             <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-compiler-plugin</artifactId>
-                    <version>3.10.1</version>
-                    <configuration>
-                        <showDeprecation>true</showDeprecation>
-                    </configuration>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.10.1</version>
+                <configuration>
+                    <showDeprecation>true</showDeprecation>
+                </configuration>
             </plugin>
             <plugin>
-                    <groupId>org.apache.rat</groupId>
-                    <artifactId>apache-rat-plugin</artifactId>
-                    <version>0.13</version>
+                <groupId>org.apache.rat</groupId>
+                <artifactId>apache-rat-plugin</artifactId>
+                <version>0.13</version>
             </plugin>
         </plugins>
 
-        </build>
+    </build>
 
-        <reporting>
+    <reporting>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-checkstyle-plugin</artifactId>
-                    <version>3.1.2</version>
-                    <configuration>
-                        <configLocation>config/sun_checks.xml</configLocation>
-                    </configuration>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <version>3.1.2</version>
+                <configuration>
+                    <configLocation>config/sun_checks.xml</configLocation>
+                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -112,7 +112,7 @@
             </plugin>
 
         </plugins>
-        </reporting>
+    </reporting>
 
 
-    </project>
+</project>
