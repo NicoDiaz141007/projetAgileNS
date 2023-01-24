@@ -38,5 +38,22 @@ public class ActionSimpleTest {
         
         float v1 = 200.0F;
         Assertions.assertEquals(v1, x.valeur(y));   
-    }    
+    }
+
+    @Test
+    public void testEnrgCompo() {
+        System.out.println("TestEnrgCoursCompose");
+        ActionComposee ac = new ActionComposee("NicoCompose");
+        ActionSimple as1 = new ActionSimple("NicoSimple");
+        Jour y2 = new Jour (2023, 20);
+        float v2 = 10.0F;
+        as1.enrgCours(y2, v2);
+        ac.enrgComposition(as1, 1.0F);
+        
+        float test2 = 10.0F;
+        Assertions.assertEquals(test2, ac.valeur(y2));   
+        
+        
+        
+    }
 }
