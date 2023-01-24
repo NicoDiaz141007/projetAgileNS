@@ -97,10 +97,11 @@ public class PortefeuilleTest {
 
         portefeuille.mapLignes = new HashMap<Action, LignePortefeuille>();
         portefeuille.mapLignes.put(atos, lignePortefeuille);
+        portefeuille.acheter(atos, 35);
+        portefeuille.vendre(atos, 36);
         int qte = portefeuille.mapLignes.get(atos).getQte();
-        portefeuille.acheter(atos, 10);
-        portefeuille.vendre(atos, 15);
-        Assertions.assertEquals(0, qte);
+
+        Assertions.assertEquals(-1, qte);
 
     }
 
