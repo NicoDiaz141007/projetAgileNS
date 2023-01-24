@@ -1,5 +1,5 @@
 /*
- * Copyright 2023 Moi.
+ * Copyright 2023 Nicolas Diaz.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,25 +15,28 @@
  */
 package tp04.metier;
 
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  *
- * @author moi
+ * @author Nicolas Diaz
  */
-public class VentTest {
+public class ActionSimpleTest {
     
-    @Test
-            
-    public void testenregistrementcoursreturnok(){
-        
-        final ActionSimple as = new ActionSimple("toto");
-        final Jour j1 = new Jour(0,0);
-        final float value = 1.37F;
-        as.enrgCours(j1,value);
-        
-        final float result = as.valeur(j1);
-        Assertions.assertEquals(value, result);   
+    public ActionSimpleTest() {
     }
+
+    @Test
+    public void testEnrgCours() {
+        System.out.println("TestEnrgCours");
+        ActionSimple x = new ActionSimple("Nico");
+        Jour y = new Jour (2023, 24);
+        float v = 200.0F;
+        x.enrgCours(y, v);
+        
+        float v1 = 200.0F;
+        Assertions.assertEquals(v1, x.valeur(y));   
+    }    
 }
