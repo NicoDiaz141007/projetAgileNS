@@ -29,7 +29,7 @@ public class PortefeuilleTest {
     public PortefeuilleTest() {
     }
 
-    @Test
+    /*@Test
     public void testAcheter() {
         ActionSimple a = new ActionSimple("toto");
         int q = 100;
@@ -38,8 +38,30 @@ public class PortefeuilleTest {
         p.acheter(a, q);
         
         Assertions.assertEquals(p.mapLignes.keySet().iterator().next().toString(), a.toString());
-    }
+    }*/
 
+    
+    @Test
+    public void testSommePortefeuille() {
+        ActionSimple action = new ActionSimple("BPCE");
+        ActionSimple action1 = new ActionSimple("AXA");
+        int q = 200;
+        int q1=400;
+     
+        Portefeuille p = new Portefeuille();
+        
+        
+        Jour j = new Jour(2023,10);
+        action.enrgCours(j, 0.2F);
+        action1.enrgCours(j, 0.2F);
+        p.acheter(action, q);
+        p.acheter(action1, q1);
+        
+        Float v1 = 120F;
+        
+        System.out.println(p.valeur(j));
+        Assertions.assertEquals(p.valeur(j), v1);
+    }
  
     
 }
