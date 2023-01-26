@@ -34,9 +34,14 @@ public class Jour {
         return noJour;
     }
 
-    public Jour(int annee, int noJour) {
-        this.annee = annee;
-        this.noJour = noJour;
+    public Jour(int annee, int noJour) throws IllegalArgumentException {
+           this.annee = annee;
+           //
+           if(noJour>365 || noJour<=0){
+               throw new IllegalArgumentException("Le noJour doit etre compris entre 1 et 365");
+           }else{
+               this.noJour = noJour;
+           }
     }
 
     @Override
