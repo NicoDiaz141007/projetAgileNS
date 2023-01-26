@@ -16,6 +16,10 @@ public class Portefeuille {
     
     Map<Action, LignePortefeuille> mapLignes;
     
+    
+    /*private Action(){
+        this.mapLignes.keySet()
+    }*/
     private class LignePortefeuille {
         
         private Action action;
