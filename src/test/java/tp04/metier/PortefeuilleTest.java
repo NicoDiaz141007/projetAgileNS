@@ -1,5 +1,5 @@
 /*
- * Copyright 2023 crist.
+ * Copyright 2023 Samba GUEYE.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,63 +15,58 @@
  */
 package tp04.metier;
 
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.Assertions;
 import java.util.HashMap;
 import java.util.Map;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import tp04.metier.Portefeuille.LignePortefeuille;
 
 /**
  *
- * @author crist
+ * @author Samba GUEYE
  */
 public class PortefeuilleTest {
-
+    
     public PortefeuilleTest() {
     }
 
     @Test
     public void testAcheter() {
-        System.out.println("acheter");
-        Action a = null;
-        int q = 0;
-        Portefeuille instance = new Portefeuille();
-        instance.acheter(a, q);
-        fail("The test case is a prototype.");
+        ActionSimple a = new ActionSimple("toto");
+        int q = 100;
+     
+        Portefeuille p = new Portefeuille();
+        p.acheter(a, q);
+        
+        Assertions.assertEquals(p.mapLignes.keySet().iterator().next().toString(), a.toString());
     }
 
+    
     @Test
-    public void testVendre() {
-        System.out.println("vendre");
-        Action a = null;
-        int q = 0;
-        Portefeuille instance = new Portefeuille();
-        instance.vendre(a, q);
-        fail("The test case is a prototype.");
+    public void testSommePortefeuille() {
+        ActionSimple action = new ActionSimple("BPCE");
+        ActionSimple action1 = new ActionSimple("AXA");
+        int q = 200;
+        int q1=400;
+     
+        Portefeuille p = new Portefeuille();
+        
+        
+        Jour j = new Jour(2023,10);
+        action.enrgCours(j, 0.2F);
+        action1.enrgCours(j, 0.2F);
+        p.acheter(action, q);
+        p.acheter(action1, q1);
+        
+        Float v1 = 120F;
+        
+        System.out.println(p.valeur(j));
+        Assertions.assertEquals(p.valeur(j), v1);
     }
-
-    @Test
-    public void testToString() {
-        System.out.println("toString");
-        Portefeuille instance = new Portefeuille();
-        String expResult = "";
-        String result = instance.toString();
-        assertEquals(expResult, result);
-        fail("The test case is a prototype.");
-    }
-
-    @Test
-    public void testValeur() {
-        System.out.println("valeur");
-        Jour j = null;
-        Portefeuille instance = new Portefeuille();
-        float expResult = 0.0F;
-        float result = instance.valeur(j);
-        assertEquals(expResult, result, 0);
-        fail("The test case is a prototype.");
-    }
-
+ 
+  
     @Test
     public void vente_action_portefeuille() {
         Portefeuille pf = new Portefeuille();
