@@ -15,10 +15,13 @@
  */
 package tp04.metier;
 
-//import org.junit.jupiter.api.Assertions;
-
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
+import java.util.HashMap;
+import java.util.Map;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+import tp04.metier.Portefeuille.LignePortefeuille;
 
 /**
  *
@@ -29,7 +32,7 @@ public class PortefeuilleTest {
     public PortefeuilleTest() {
     }
 
-    /*@Test
+    @Test
     public void testAcheter() {
         ActionSimple a = new ActionSimple("toto");
         int q = 100;
@@ -38,7 +41,7 @@ public class PortefeuilleTest {
         p.acheter(a, q);
         
         Assertions.assertEquals(p.mapLignes.keySet().iterator().next().toString(), a.toString());
-    }*/
+    }
 
     
     @Test
@@ -63,5 +66,54 @@ public class PortefeuilleTest {
         Assertions.assertEquals(p.valeur(j), v1);
     }
  
-    
+  
+    @Test
+    public void vente_action_portefeuille() {
+        Portefeuille pf = new Portefeuille();
+        Action atos = new ActionSimple("atos");
+        Action soprasteria = new ActionSimple("sopra");
+
+        String lib = atos.getLibelle();
+
+        //pf.mapLignes(atos, new LignePortefeuille(10));
+        pf.acheter(soprasteria, 5);
+        pf.acheter(atos, 10);
+
+        pf.vendre(atos, 1);
+        Assertions.assertEquals("atos", lib);
+
+    }
+
+    @Test
+    public void vente_action_qte_portefeuille() {
+        Portefeuille portefeuille = new Portefeuille();
+        Action atos = new ActionSimple("atos");
+        LignePortefeuille lignePortefeuille = portefeuille.new LignePortefeuille(atos, 0);
+
+        portefeuille.mapLignes = new HashMap<Action, LignePortefeuille>();
+        portefeuille.mapLignes.put(atos, lignePortefeuille);
+        int qte = portefeuille.mapLignes.get(atos).getQte();
+        portefeuille.acheter(atos, 10);
+        portefeuille.vendre(atos, 15);
+        Assertions.assertEquals(0, qte);
+
+    }
+
+    @Test
+    public void vente_action_qte_egale_qte_vendu() {
+        Portefeuille portefeuille = new Portefeuille();
+        Action atos = new ActionSimple("atos");
+        LignePortefeuille lignePortefeuille = portefeuille.new LignePortefeuille(atos, 0);
+        portefeuille.mapLignes = new HashMap<Action, LignePortefeuille>();
+        portefeuille.mapLignes.put(atos, lignePortefeuille);
+        portefeuille.acheter(atos, 10);
+        portefeuille.vendre(atos, 10);
+        
+        
+        Action a= portefeuille.mapLignes.get(atos).getAction();
+        //ici l'action atos n'existe plus donc le test retournera toujours null (fail)
+        Assertions.assertNull(a);
+
+    }
+
 }
