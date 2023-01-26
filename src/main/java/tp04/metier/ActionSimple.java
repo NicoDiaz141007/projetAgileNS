@@ -32,6 +32,11 @@ public class ActionSimple extends Action {
             this.mapCours.put(j, new Cours(j, v));
     }
     
+    public void modifJourVal(Jour j, float x){
+        if(this.mapCours.containsKey(j) == true)
+            this.mapCours.replace(j, new Cours (j,x));
+    }
+    
     @Override
     public float valeur(Jour j) {
         if(this.mapCours.containsKey(j) == true)
