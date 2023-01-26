@@ -33,7 +33,7 @@ public class Run {
         axa.enrgCours(j1, 200);
         axa.enrgCours(j2, 250);
         bnp.enrgCours(j1, 100);
-        bnp.enrgCours(j2, 200);
+        bnp.enrgCours(j2, 200);    
         // affichage des cours - comme 1 action simple et 1 action
         System.out.println("Action simple *bnp* à j1 : " + bnp.valeur(j1));
         System.out.println("Action *Banque-Assurance* à j2 : " + bqAss.valeur(j2));
@@ -57,7 +57,8 @@ public class Run {
         System.out.println("Portefeuille : " + p);
         p.vendre(bnp, 50);
         System.out.println("Portefeuille : " + p);
- 
+        
     }
 
 }
+
