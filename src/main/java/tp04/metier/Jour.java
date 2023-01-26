@@ -44,7 +44,7 @@ public class Jour {
                }
                else{
                     this.noJour = noJour;
-                }
+                } 
            }
            else {
                if(noJour>365 || noJour<=0){
