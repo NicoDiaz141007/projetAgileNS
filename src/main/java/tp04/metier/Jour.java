@@ -60,8 +60,9 @@ public class Jour {
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 61 * hash + this.annee;
-        hash = 61 * hash + this.noJour;
+        int nbpremier = 61;
+        hash = nbpremier * hash + this.annee;
+        hash = nbpremier * hash + this.noJour;
         return hash;
     }
 

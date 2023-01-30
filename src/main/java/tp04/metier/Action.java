@@ -15,6 +15,9 @@ import java.util.Objects;
 public abstract class Action {
     
     private String libelle;
+    //Ajout de la valeur de l'action
+    private float valeur;
+
 
     /**
      * Get the value of libelle
@@ -25,6 +28,15 @@ public abstract class Action {
         return libelle;
     }
 
+    //Ajout de la méthode setValeur
+
+    public void setValeur(float valeur) {
+        this.valeur = valeur;
+    }
+    
+
+    
+    
     public Action(String libelle) {
         this.libelle = libelle;
     }
@@ -34,8 +46,9 @@ public abstract class Action {
     @Override
     public int hashCode() {
         int hash = 3;
-        int test = 1;
-        hash = 53 * hash + Objects.hashCode(this.libelle);
+        int val = 53;
+        //int test = 1;
+        hash = val * hash + Objects.hashCode(this.libelle);
         return hash;
     }
 
@@ -60,6 +73,7 @@ public abstract class Action {
         return true;
     }
 
+    @Override
     public String toString() {
         return this.getLibelle();
     }

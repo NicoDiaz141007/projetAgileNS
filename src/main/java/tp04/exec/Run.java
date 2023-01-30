@@ -40,22 +40,19 @@ public class Run {
 
         Portefeuille p;
         p = new Portefeuille();
-        p.acheter(axa, 10);
+        p.acheter(axa, 10, j1);
         System.out.println("Portefeuille : " + p);
-        p.acheter(bnp, 20);
+        p.acheter(bnp, 20,j1);
         System.out.println("Portefeuille : " + p);
-        p.acheter(bqAss, 5);
-        System.out.println("Portefeuille : " + p);
-        p.acheter(bqAss, 15);
-        System.out.println("Portefeuille : " + p);
+        
         System.out.println("Portefeuille à j1 : " + p.valeur(j1));
-        p.vendre(axa, 5);
+        p.vendre(axa, 5,j1);
         System.out.println("Portefeuille : " + p);
-        p.vendre(axa, 5);
+        p.vendre(axa, 5,j1);
         System.out.println("Portefeuille : " + p);
-        p.vendre(axa, 5);
+        p.vendre(axa, 5,j1);
         System.out.println("Portefeuille : " + p);
-        p.vendre(bnp, 50);
+        p.vendre(bnp, 50,j1);
         System.out.println("Portefeuille : " + p);
         
     }

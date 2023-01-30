@@ -15,12 +15,9 @@
  */
 package tp04.metier;
 
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
 import java.util.HashMap;
-import java.util.Map;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
 import tp04.metier.Portefeuille.LignePortefeuille;
 
 /**
@@ -28,11 +25,86 @@ import tp04.metier.Portefeuille.LignePortefeuille;
  * @author Samba GUEYE
  */
 public class PortefeuilleTest {
-    
-    public PortefeuilleTest() {
+
+    @Test
+    public void testAcheter() {
+        ActionSimple a = new ActionSimple("toto");
+        int q = 100;
+        Portefeuille p = new Portefeuille();
+        p.acheter(a, q, new Jour(2023, 1));
+
+        Assertions.assertEquals(a.toString(), p.mapLignes.keySet().iterator().next().toString());
     }
 
     @Test
+    public void testSommePortefeuille() {
+        ActionSimple action = new ActionSimple("BPCE");
+        ActionSimple action1 = new ActionSimple("AXA");
+        int q = 200;
+        int q1 = 400;
+
+        Portefeuille p = new Portefeuille();
+        Jour j = new Jour(2023, 10);
+        action.enrgCours(j, 0.2F);
+        action1.enrgCours(j, 0.2F);
+        p.acheter(action, q, j);
+        p.acheter(action1, q1, j);
+
+        Float v1 = 120F;
+
+        Assertions.assertEquals(p.valeur(j), v1);
+    }
+
+    @Test
+    public void testVenteAction() {
+        Portefeuille pf = new Portefeuille();
+        ActionSimple atos = new ActionSimple("atos");
+        ActionSimple soprasteria = new ActionSimple("sopra");
+
+        String lib = atos.getLibelle();
+
+        pf.acheter(soprasteria, 5, new Jour(2023, 1));
+        pf.acheter(atos, 10, new Jour(2023, 1));
+
+        pf.vendre(atos, 1, new Jour(2023, 2));
+        Assertions.assertEquals("atos", lib);
+    }
+
+    @Test
+    public void testVenteActionQte() {
+        Portefeuille portefeuille = new Portefeuille();
+        ActionSimple atos = new ActionSimple("atos");
+        portefeuille.acheter(atos, 10, new Jour(2023, 1));
+        portefeuille.vendre(atos, 15, new Jour(2023, 2));
+        int qte = 0;
+        for (LignePortefeuille ligne : portefeuille.mapLignes.values()) {
+            if (ligne.getAction().equals(atos)) {
+                qte = ligne.getQte();
+                break;
+            }
+        }
+        Assertions.assertEquals(0, qte);
+    }
+
+    @Test
+    public void testVenteActionQteEgaleQteVendue() {
+        Portefeuille portefeuille = new Portefeuille();
+        ActionSimple atos = new ActionSimple("atos");
+        portefeuille.acheter(atos, 10, new Jour(2023, 1));
+        portefeuille.vendre(atos, 10, new Jour(2023, 2));
+        int qte = 0;
+        for (LignePortefeuille ligne : portefeuille.mapLignes.values()) {
+            if (ligne.getAction().equals(atos)) {
+                qte = ligne.getQte();
+                break;
+            }
+        }
+        Assertions.assertEquals(0, qte);
+    }
+
+}
+
+/* @Test
     public void testAcheter() {
         ActionSimple a = new ActionSimple("toto");
         int q = 100;
@@ -114,6 +186,5 @@ public class PortefeuilleTest {
         //ici l'action atos n'existe plus donc le test retournera toujours null (fail)
         Assertions.assertNull(a);
 
-    }
+    }*/
 
-}
