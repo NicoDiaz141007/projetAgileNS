@@ -37,6 +37,17 @@ public class ActionSimple extends Action {
             this.mapCours.replace(j, new Cours (j,x));
     }
     
+    //Ajout de la méthode setValeur pour définir la valeur d'une action pour un jour donné
+    public void setValeur(Jour j, float valeur) {
+    if(this.mapCours.containsKey(j)) {
+        this.mapCours.replace(j, new Cours(j, valeur));
+    }
+}
+
+
+   
+    
+    
     @Override
     public float valeur(Jour j) {
         if(this.mapCours.containsKey(j) == true)
